@@ -36,6 +36,7 @@ section p.sub{color:var(--muted);margin:0 0 32px;max-width:640px}
 .price small{font-size:15px;color:var(--muted);font-weight:500}
 .card ul{padding-left:18px;margin:0 0 20px;color:var(--muted)}
 .card .btn{margin-top:auto;text-align:center}
+.card .btn + .btn{margin-top:10px}
 .steps{counter-reset:s;display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
 .steps div{background:var(--soft);border-radius:var(--radius);padding:22px}
 .steps div::before{counter-increment:s;content:counter(s);display:inline-flex;width:34px;height:34px;border-radius:50%;background:var(--brand);color:#fff;align-items:center;justify-content:center;font-weight:700;margin-bottom:10px}
@@ -48,6 +49,6 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
 .choose{display:grid;gap:24px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));margin-top:32px}
 .choose a{display:block;border-radius:var(--radius);padding:36px;text-decoration:none;color:#fff;min-height:220px}
 .choose a h2{margin:0 0 10px;font-size:28px}
-.choose .g{background:linear-gradient(135deg,#1f6f4a,#2f8f5f)}
-.choose .h{background:linear-gradient(135deg,#8a4b2a,#b8703f)}
+.choose .g{background:linear-gradient(135deg,#1f6f4a,#2a8257)}
+.choose .h{background:linear-gradient(135deg,#8a4b2a,#a35f33)}
 @media (max-width:640px){nav{display:none}.hero{padding:48px 0 32px}section{padding:48px 0}}
