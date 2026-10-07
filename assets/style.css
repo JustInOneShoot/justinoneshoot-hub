@@ -45,7 +45,11 @@ details{border-bottom:1px solid var(--line);padding:14px 0}
 summary{cursor:pointer;font-weight:600}
 .offer{margin-top:18px;font-size:15px;color:var(--muted)}
 footer{padding:40px 0;color:var(--muted);font-size:14px;border-top:1px solid var(--line)}
-footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+footer .wrap{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
+footer a{display:inline-block;padding:12px 4px;margin:-12px 0}
+a:focus-visible,summary:focus-visible,.btn:focus-visible{outline:3px solid var(--brand);outline-offset:3px;border-radius:6px}
+.btn:focus-visible{border-radius:999px}
+.choose a:focus-visible{outline-color:var(--ink)}
 .choose{display:grid;gap:24px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));margin-top:32px}
 .choose a{display:block;border-radius:var(--radius);padding:36px;text-decoration:none;color:#fff;min-height:220px}
 .choose a h2{margin:0 0 10px;font-size:28px}
