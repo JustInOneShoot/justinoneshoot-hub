@@ -50,6 +50,7 @@ footer a{display:inline-block;padding:12px 4px;margin:-12px 0}
 a:focus-visible,summary:focus-visible,.btn:focus-visible{outline:3px solid var(--brand);outline-offset:3px;border-radius:6px}
 .btn:focus-visible{border-radius:999px}
 .choose a:focus-visible{outline-color:var(--ink)}
+.hub-logo{height:64px;width:auto;margin-bottom:20px}
 .choose{display:grid;gap:24px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));margin-top:32px}
 .choose a{display:block;border-radius:var(--radius);padding:36px;text-decoration:none;color:#fff;min-height:220px}
 .choose a h2{margin:0 0 10px;font-size:28px}
