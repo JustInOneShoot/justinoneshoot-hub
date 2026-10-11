@@ -37,6 +37,8 @@ section p.sub{color:var(--muted);margin:0 0 32px;max-width:640px}
 .card ul{padding-left:18px;margin:0 0 20px;color:var(--muted)}
 .card .btn{margin-top:auto;text-align:center}
 .card .btn + .btn{margin-top:10px}
+.card-note{margin:10px 0 0;font-size:15px;color:var(--muted)}
+.grid + p{margin:28px 0 0;max-width:720px}
 .steps{counter-reset:s;display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
 .steps div{background:var(--soft);border-radius:var(--radius);padding:22px}
 .steps div::before{counter-increment:s;content:counter(s);display:inline-flex;width:34px;height:34px;border-radius:50%;background:var(--brand);color:#fff;align-items:center;justify-content:center;font-weight:700;margin-bottom:10px}
