@@ -49,7 +49,7 @@ details p{margin:0 0 16px}
 .offer{margin-top:18px;font-size:15px;color:var(--muted)}
 footer{padding:40px 0;color:var(--muted);font-size:14px;border-top:1px solid var(--line)}
 footer .wrap{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
-footer a{display:inline-block;padding:12px 4px;margin:-12px 0}
+footer a{display:inline-block;padding:12px 4px;margin:-12px -4px}
 a:focus-visible,summary:focus-visible,.btn:focus-visible{outline:3px solid var(--brand);outline-offset:3px;border-radius:6px}
 .btn:focus-visible{border-radius:999px}
 .choose a:focus-visible{outline-color:var(--ink)}
@@ -59,4 +59,4 @@ a:focus-visible,summary:focus-visible,.btn:focus-visible{outline:3px solid var(-
 .choose a h2{margin:0 0 10px;font-size:28px}
 .choose .g{background:linear-gradient(135deg,#1f6f4a,#2a8257)}
 .choose .h{background:linear-gradient(135deg,#8a4b2a,#a35f33)}
-@media (max-width:640px){nav{display:none}.hero{padding:48px 0 32px}section{padding:48px 0}}
+@media (max-width:640px){nav{display:none}.hero{padding:48px 0 32px}section{padding:48px 0}.choose{gap:16px}.choose a{padding:28px 24px;min-height:0}}
