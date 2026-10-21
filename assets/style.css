@@ -27,7 +27,8 @@ h1,h2,h3{font-family:var(--serif);font-weight:500;letter-spacing:-.01em;line-hei
 h1{font-size:clamp(40px,6.2vw,84px);max-width:17ch}
 h2{font-size:clamp(30px,3.6vw,46px);max-width:20ch;margin-bottom:14px}
 h3{font-size:24px;line-height:1.2}
-body.homes h1{font-size:clamp(38px,5.2vw,68px);max-width:21ch}
+/* Only the old hero heading: the film's first-screen h1 and the plain pages' h1 keep their own sizes */
+body.homes .hero h1{font-size:clamp(38px,5.2vw,68px);max-width:21ch}
 p{margin:0 0 1em;max-width:var(--measure)}
 .lead{font-size:clamp(19px,1.6vw,22px);color:var(--soft);max-width:54ch}
 
