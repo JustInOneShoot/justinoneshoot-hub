@@ -6,12 +6,14 @@
   --gold:#c9a45f; --gold-deep:#8f6d2c; --ink:#16201a; --muted:#56635a; --rule:#d8d0bc;
   --bg:var(--linen); --fg:var(--ink); --soft:var(--muted); --line:var(--rule); --panel:#fffdf7;
   --brand:var(--fairway); --on-brand:var(--linen);
+  /* Keyboard focus ring: deep gold on linen (4.3:1), bright gold on pine and footage */
+  --focus:var(--gold-deep);
   --serif:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua","URW Palladio L",Georgia,serif;
   --sans:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
   --measure:62ch; --wide:1160px;
 }
 body.golf{--bg:var(--pine); --fg:var(--linen); --soft:#b9c7bb; --line:#2c4a3a; --panel:#13351f;
-  --brand:var(--gold); --on-brand:var(--pine)}
+  --brand:var(--gold); --on-brand:var(--pine); --focus:var(--gold)}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
@@ -19,11 +21,11 @@ body{margin:0;background:var(--bg);color:var(--fg);font:400 18px/1.65 var(--sans
 img,video,iframe,canvas,svg{max-width:100%;display:block}
 a{color:inherit;text-decoration-thickness:1px;text-underline-offset:3px}
 a:hover{text-decoration-color:var(--gold)}
-:focus-visible{outline:3px solid var(--gold);outline-offset:3px;border-radius:2px}
+:focus-visible{outline:3px solid var(--focus);outline-offset:3px;border-radius:2px}
 .skip{position:absolute;left:-999px;top:8px;background:var(--fg);color:var(--bg);padding:8px 14px;z-index:20}
 .skip:focus{left:12px}
 .wrap{max-width:var(--wide);margin:0 auto;padding:0 24px}
-h1,h2,h3{font-family:var(--serif);font-weight:500;letter-spacing:-.01em;line-height:1.08;margin:0}
+h1,h2,h3{font-family:var(--serif);font-weight:500;letter-spacing:-.01em;line-height:1.08;margin:0;text-wrap:balance}
 h1{font-size:clamp(40px,6.2vw,84px);max-width:17ch}
 h2{font-size:clamp(30px,3.6vw,46px);max-width:20ch;margin-bottom:14px}
 h3{font-size:24px;line-height:1.2}
@@ -61,7 +63,7 @@ nav a:hover{color:var(--fg)}
    (scroll.js + scroll.json). The page is built inside it: every section is a
    glass panel floating over the footage. Without footage it is a still pine sky. */
 body.cine{background:#08180f;color:#fff;--fg:#fff;--soft:rgba(255,255,255,.76);--line:rgba(255,255,255,.18);
-  --brand:var(--gold);--on-brand:var(--pine);--panel:rgba(255,255,255,.06)}
+  --brand:var(--gold);--on-brand:var(--pine);--panel:rgba(255,255,255,.06);--focus:var(--gold)}
 .backdrop{position:fixed;inset:0;z-index:0;background:#0b2117 radial-gradient(120% 90% at 70% 15%,#1d4a33 0%,#0f2a1d 55%,#06140c 100%);
   background-size:cover;background-position:center}
 .backdrop canvas{position:absolute;inset:0;width:100%;height:100%;opacity:0;transition:opacity 1s}
@@ -106,7 +108,7 @@ body.cine section.block>.wrap,body.cine .intro>.wrap{background:rgba(6,18,12,.5)
   border-radius:10px;padding:clamp(28px,4.5vw,64px);backdrop-filter:blur(18px) saturate(1.25);-webkit-backdrop-filter:blur(18px) saturate(1.25);
   max-width:1080px}
 body.cine.homes section.block>.wrap,body.cine.homes .intro>.wrap{background:rgba(248,244,234,.84);border-color:rgba(255,255,255,.5);color:var(--ink);
-  --fg:var(--ink);--soft:var(--muted);--line:var(--rule);--brand:var(--fairway);--on-brand:var(--linen);--panel:#fffdf7}
+  --fg:var(--ink);--soft:var(--muted);--line:var(--rule);--brand:var(--fairway);--on-brand:var(--linen);--panel:#fffdf7;--focus:var(--gold-deep)}
 body.cine .intro .lead{font-size:clamp(20px,1.9vw,26px);line-height:1.5;color:var(--fg);max-width:44ch}
 body.cine .intro .ctas{margin-top:28px}
 body.cine .honest{grid-template-columns:minmax(0,1fr) minmax(0,1.4fr)}
@@ -126,7 +128,7 @@ body.cine .menu{border-top-color:var(--fg)}
 .has-film body.cine.homes section.block>.wrap,.has-film body.cine.homes .intro>.wrap,
 .has-film body.cine footer .wrap{background:transparent;border-color:transparent;backdrop-filter:none;-webkit-backdrop-filter:none}
 .has-film body.cine.homes section.block>.wrap,.has-film body.cine.homes .intro>.wrap{color:#fff;
-  --fg:#fff;--soft:rgba(255,255,255,.8);--line:rgba(255,255,255,.3);--brand:var(--gold);--on-brand:var(--pine);--panel:rgba(255,255,255,.06)}
+  --fg:#fff;--soft:rgba(255,255,255,.8);--line:rgba(255,255,255,.3);--brand:var(--gold);--on-brand:var(--pine);--panel:rgba(255,255,255,.06);--focus:var(--gold)}
 .has-film body.cine main,.has-film body.cine footer{text-shadow:0 1px 2px rgba(0,0,0,.35),0 2px 22px rgba(0,0,0,.45)}
 .has-film body.cine .btn{text-shadow:none}
 .has-film body.cine .steps li::before{color:var(--gold)}
