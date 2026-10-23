@@ -1,0 +1,113 @@
+/* Motion shared by golf and homes. Loaded after style.css, before golf.css or
+   homes.css. scroll.js adds .rv (reveals) and .mo (motion) to <html>; with
+   "reduce motion" on it adds neither, so nothing here applies and everything
+   is simply shown. Each site's own CSS changes the style of each move. */
+
+/* Text that keeps moving (scroll.js adds .mo; --vel is the scroll speed) */
+.mo main > section,.mo footer{transform:skewY(calc(var(--vel,0) * .35deg)) translate3d(0,calc(var(--vel,0) * -1.6px),0);will-change:transform}
+/* The wordmark letters ripple all the time */
+.rv .wordmark.in .w>span{animation:mo-ripple 3.4s ease-in-out calc(var(--i,0) * .12s) infinite}
+@keyframes mo-ripple{0%,100%{transform:translateY(0)}50%{transform:translateY(-.07em)}}
+/* One word in the opening line keeps changing */
+.w.rot{position:relative}
+.w.rot>span{display:inline-block;transition:transform .38s cubic-bezier(.6,0,.4,1),opacity .3s,color .4s}
+.w.rot>span.out{transform:translateY(-110%);opacity:0}
+.w.rot>span.fresh{transform:translateY(110%);opacity:0;transition:none}
+.rv .w.rot>span{color:var(--gold)}
+/* Paragraphs come in word by word from alternating sides, questions slide */
+.rv main .lead .w>span,.rv .sub .w>span,.rv .honest p .w>span{opacity:0;transform:translateX(-.6em);transition:transform .7s cubic-bezier(.2,.7,.2,1) calc(var(--i,0) * .035s),opacity .5s ease calc(var(--i,0) * .035s)}
+.rv main .lead .w:nth-child(even)>span,.rv .sub .w:nth-child(even)>span,.rv .honest p .w:nth-child(even)>span{transform:translateX(.6em)}
+.rv main .lead.in .w>span,.rv .sub.in .w>span,.rv .honest p.in .w>span{opacity:1;transform:none}
+.rv summary .w>span{transform:translateY(105%);transition:transform .7s cubic-bezier(.2,.75,.15,1)}
+.rv summary.in .w>span{transform:none}
+/* Hover: the letters of a package name or a question ride a wave */
+.mo .item h3 .w>span,.mo summary .w>span,.mo nav a{transition:transform .35s cubic-bezier(.2,.7,.2,1),color .3s}
+.mo .item:hover h3 .w>span,.mo summary:hover .w>span{transform:translateY(-.18em) rotate(-2deg);transition-delay:calc(var(--i,0) * .04s)}
+.mo nav a{display:inline-block}
+.mo nav a:hover{transform:translateY(-3px) skewX(-6deg)}
+/* The package-name bands never stop moving (scrolling pushes them further) */
+.mo .drift-line{animation:mo-march 26s linear infinite}
+.mo .drift+.drift .drift-line{animation-direction:reverse;animation-duration:32s}
+@keyframes mo-march{to{margin-left:-33.333%}}
+/* The facts' numbers keep a slow pulse */
+.mo .facts strong{animation:mo-pulse 4s ease-in-out infinite}
+.mo .facts div:nth-child(2) strong{animation-delay:1.3s}
+.mo .facts div:nth-child(3) strong{animation-delay:2.6s}
+@keyframes mo-pulse{50%{transform:translateY(-3px);opacity:.82}}
+
+/* Header drops in */
+.mo header.top{animation:mo-drop 1s cubic-bezier(.2,.7,.2,1) both}
+@keyframes mo-drop{from{transform:translateY(-100%);opacity:0}}
+
+/* Headings move at their own speed and draw a rule under themselves */
+.mo main h2{transform:translate3d(0,var(--py,0px),0);will-change:transform}
+main h2::after{content:"";display:block;height:2px;width:72px;margin-top:20px;background:var(--gold);transform-origin:left}
+.rv main h2::after{transform:scaleX(0);transition:transform 1.2s cubic-bezier(.2,.7,.2,1) .45s}
+.rv main h2.in::after{transform:none}
+
+/* Package and step titles, word by word */
+.rv .item h3 .w>span,.rv .steps h3 .w>span{transform:translateY(105%);transition:transform .8s cubic-bezier(.2,.75,.15,1)}
+.rv .item h3.in .w>span,.rv .steps h3.in .w>span{transform:none}
+
+/* Package details follow their title in, one line after another */
+.rv .item li{opacity:0;transform:translateX(18px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
+.rv .item.in li{opacity:1;transform:none}
+.rv .item.in li:nth-child(1){transition-delay:.25s}
+.rv .item.in li:nth-child(2){transition-delay:.35s}
+.rv .item.in li:nth-child(3){transition-delay:.45s}
+
+/* Stills from the website footage fly in, then drift at their own speed */
+.stills{display:grid;gap:clamp(10px,1.6vw,22px);margin-top:clamp(36px,5vw,64px);grid-template-columns:repeat(3,minmax(0,1fr))}
+.stills.n2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.honest .stills{grid-column:1/-1}
+.still{display:block;position:relative;aspect-ratio:16/10;overflow:hidden;box-shadow:0 34px 70px -24px rgba(0,0,0,.7)}
+.still img{position:absolute;left:0;right:0;top:-9%;width:100%;height:118%;object-fit:cover;
+  transform:translate3d(0,var(--py,0px),0) scale(1.06);will-change:transform}
+.rv .still{opacity:0;transition:transform 1.4s cubic-bezier(.16,.84,.24,1) var(--d),opacity 1s ease var(--d)}
+.rv .stills .s0{transform:translate3d(-140px,90px,0) rotate(-9deg) scale(.9)}
+.rv .stills .s1{transform:translate3d(0,160px,0) rotate(5deg) scale(.86)}
+.rv .stills .s2{transform:translate3d(140px,90px,0) rotate(9deg) scale(.9)}
+.rv .stills.n2 .s1{transform:translate3d(140px,110px,0) rotate(7deg) scale(.9)}
+.rv .stills.in .still{opacity:1;transform:none}
+
+/* The package names drift across the screen as you scroll */
+.drift{position:relative;z-index:1;overflow:hidden;padding:1.5vh 0;pointer-events:none}
+.drift-line{display:flex;gap:.5em;white-space:nowrap;width:max-content;will-change:transform;
+  font:400 clamp(54px,9vw,148px)/1.04 var(--serif);letter-spacing:-.02em;color:rgba(255,255,255,.92)}
+.drift+.drift .drift-line{color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.6)}
+.drift-line span::after{content:"";display:inline-block;width:.16em;height:.16em;margin-left:.5em;vertical-align:.22em;background:var(--gold);border-radius:50%}
+
+/* Scroll progress */
+.progress{position:fixed;z-index:12;pointer-events:none}
+
+/* Photos follow the pointer: each appears where the pointer is, then fades */
+.trail{position:fixed;inset:0;z-index:9;pointer-events:none;overflow:hidden}
+.trail img{position:absolute;width:clamp(150px,16vw,250px);aspect-ratio:3/2;object-fit:cover;margin:-8% 0 0 -8%;
+  transform:translate(-50%,-50%) scale(.55) rotate(var(--rot,0deg));opacity:0;
+  box-shadow:0 30px 60px -20px rgba(0,0,0,.75);will-change:transform,opacity;
+  transition:transform .55s cubic-bezier(.2,.8,.2,1),opacity .35s ease}
+.trail img.on{opacity:1;transform:translate(-50%,-50%) scale(1) rotate(var(--rot,0deg))}
+.trail img.off{opacity:0;transform:translate(-50%,-60%) scale(.9) rotate(var(--rot,0deg));transition:transform .8s ease,opacity .8s ease}
+
+/* Buttons lean toward the pointer */
+.mo .btn,.mo .pill{transform:translate3d(var(--mx,0px),var(--my,0px),0);
+  transition:transform .4s cubic-bezier(.2,.7,.2,1),background .25s,color .25s,border-color .25s,box-shadow .35s}
+
+/* Answers slide open */
+.mo details.opening p{animation:mo-open .55s cubic-bezier(.2,.7,.2,1)}
+@keyframes mo-open{from{opacity:0;transform:translateY(-10px)}}
+
+/* The sample placeholder shimmers until the real video is in */
+.mo .video{background-image:linear-gradient(110deg,rgba(255,255,255,0) 35%,rgba(255,255,255,.1) 50%,rgba(255,255,255,0) 65%);
+  background-size:250% 100%;animation:mo-sheen 3.6s linear infinite}
+@keyframes mo-sheen{from{background-position:120% 0}to{background-position:-120% 0}}
+
+/* Footer links underline from the left */
+footer a{text-decoration:none;background:linear-gradient(currentColor,currentColor) left bottom/0 1px no-repeat;transition:background-size .45s cubic-bezier(.2,.7,.2,1)}
+footer a:hover{background-size:100% 1px}
+
+@media (max-width:820px){
+  .stills{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .rv .stills .s0{transform:translate3d(-60px,60px,0) rotate(-8deg) scale(.9)}
+  .rv .stills .s2{transform:translate3d(60px,60px,0) rotate(8deg) scale(.9)}
+}
