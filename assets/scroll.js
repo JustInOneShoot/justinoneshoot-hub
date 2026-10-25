@@ -36,8 +36,14 @@
     if (el.getAttribute("data-split")) return;
     el.setAttribute("data-split", "1");
     var text = el.textContent, parts = unit === "letter" ? text.split("") : text.split(/(\s+)/);
-    el.setAttribute("aria-label", text.trim());
     el.textContent = "";
+    // Screen readers ignore aria-label on a paragraph, so a paragraph gets a
+    // visually hidden copy of its text; other elements keep the aria-label.
+    if (el.tagName === "P") {
+      var sr = document.createElement("span"); sr.className = "sr-only"; sr.textContent = text.trim(); el.appendChild(sr);
+    } else {
+      el.setAttribute("aria-label", text.trim());
+    }
     // In a flex row (the questions: text left, "+" right) the words must stay
     // together in one box, or the row spreads them across the whole width.
     var host = el, disp = window.getComputedStyle(el).display;
