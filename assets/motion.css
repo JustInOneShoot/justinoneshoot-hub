@@ -71,7 +71,8 @@ main h2::after{content:"";display:block;height:2px;width:72px;margin-top:20px;ba
 .rv .stills.in .still{opacity:1;transform:none}
 
 /* The package names drift across the screen as you scroll */
-.drift{position:relative;z-index:1;overflow:hidden;padding:1.5vh 0;pointer-events:none}
+.drift{position:relative;z-index:1;overflow:hidden;padding:1.5vh 0;pointer-events:none;background:rgba(9,20,16,.62)}
+body.homes .drift{background:rgba(20,33,58,.62)}
 .drift-line{display:flex;gap:.5em;white-space:nowrap;width:max-content;will-change:transform;
   font:400 clamp(54px,9vw,148px)/1.04 var(--serif);letter-spacing:-.02em;color:rgba(255,255,255,.92)}
 .drift+.drift .drift-line{color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.6)}
