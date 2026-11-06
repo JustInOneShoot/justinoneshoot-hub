@@ -175,7 +175,6 @@
     document.documentElement.classList.add("mo");
     hero = document.querySelector(".film .over");
     wordmark = document.querySelector(".wordmark");
-    document.querySelectorAll(".facts strong, .price").forEach(countUp);
     document.querySelectorAll("main h2").forEach(function (h) { movers.push({ el: h, ref: h.parentNode, speed: 0.05 }); });
     driftBands();
     bar = document.createElement("div"); bar.className = "progress"; bar.setAttribute("aria-hidden", "true");

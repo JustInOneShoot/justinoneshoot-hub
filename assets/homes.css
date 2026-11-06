@@ -128,6 +128,8 @@ body.homes .progress i{position:absolute;left:-3px;top:calc(var(--p,0) * 100%);m
   body.cine.homes .film .over .wrap{padding-left:28px;padding-right:28px}
   body.homes .item{grid-template-columns:1fr auto}
   body.homes .item::before{left:-12px}
-  body.homes .wordmark{font-size:clamp(30px,8.6vw,80px)}
+  body.homes .wordmark{font-size:clamp(26px,7.2vw,80px)}
+  body.homes{overflow-x:clip}
+  body.homes .drift{max-width:100vw}
   body.homes .steps li{grid-template-columns:44px minmax(0,1fr)}
 }
