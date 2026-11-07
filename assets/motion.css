@@ -76,6 +76,10 @@ body.homes .drift{background:rgba(20,33,58,.62)}
 .drift-line{display:flex;gap:.5em;white-space:nowrap;width:max-content;will-change:transform;
   font:400 clamp(54px,9vw,148px)/1.04 var(--serif);letter-spacing:-.02em;color:rgba(255,255,255,.92)}
 .drift+.drift .drift-line{color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.6)}
+.drift{max-width:100%;contain:paint}
+/* Small room label above a room's heading: <p class="room-label">The kitchen</p> */
+.room-label{margin:0 0 8px;font:600 14px/1.3 var(--sans);letter-spacing:.04em;color:var(--gold);text-shadow:0 1px 8px rgba(0,0,0,.6)}
+@media (max-width:520px){.drift-line{font-size:40px}}
 .drift-line span::after{content:"";display:inline-block;width:.16em;height:.16em;margin-left:.5em;vertical-align:.22em;background:var(--gold);border-radius:50%}
 
 /* Scroll progress */
