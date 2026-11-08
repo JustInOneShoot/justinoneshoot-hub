@@ -14,7 +14,8 @@
    - stills from the website footage fly in under the intro and the honesty
      section (only once footage exists);
    - the package names drift sideways across the screen as you scroll;
-   - prices and facts count up; headings and stills move at their own speed;
+   - headings and stills move at their own speed (prices and facts never
+     animate: they always show their real value);
    - the first screen drifts away, the wordmark moves with the scroll;
    - photos appear one after another along the pointer's path and fade
      (trail.json, written by tools/trail_photos.py from the stock photo
@@ -110,30 +111,6 @@
   /* ---------- motion ---------- */
   var movers = [], drifts = [], hero = null, wordmark = null, bar = null;
   var isHomes = document.body.classList.contains("homes");
-
-  function countUp(el) {
-    var node = el.firstChild;
-    if (!node || node.nodeType !== 3) return;
-    var m = node.nodeValue.match(/^(\s*\$?)([\d,]+)(\D*)$/);
-    if (!m) return;
-    var end = parseInt(m[2].replace(/,/g, ""), 10);
-    if (!(end > 0)) return;
-    var original = node.nodeValue;
-    node.nodeValue = m[1] + "0" + m[3];
-    var seen = new IntersectionObserver(function (es) {
-      if (!es[0].isIntersecting) return;
-      seen.disconnect();
-      var t0 = null;
-      function step(ts) {
-        if (t0 === null) t0 = ts;
-        var k = Math.min(1, (ts - t0) / 1500); k = 1 - Math.pow(1 - k, 3);
-        node.nodeValue = m[1] + Math.round(end * k).toLocaleString("en-US") + m[3];
-        if (k < 1) requestAnimationFrame(step); else node.nodeValue = original;
-      }
-      requestAnimationFrame(step);
-    }, { threshold: 0.5 });
-    seen.observe(el);
-  }
 
   function driftBands() {
     var names = [].map.call(document.querySelectorAll(".item h3"), function (h) { return (h.getAttribute("aria-label") || h.textContent).trim(); });
