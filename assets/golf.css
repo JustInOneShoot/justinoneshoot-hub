@@ -32,7 +32,8 @@ body.golf .facts div::before{content:"";position:absolute;left:0;right:0;top:0;h
 .rv body.golf .facts div::before{transform:scaleX(0);transition:transform 1.3s cubic-bezier(.2,.7,.2,1) calc(var(--d,0s) + .35s)}
 .rv body.golf .facts div.in::before{transform:none}
 body.golf .facts strong{font-size:clamp(28px,2.5vw,38px);color:var(--brass-lt)}
-body.golf .wordmark{will-change:transform;font-family:var(--serif);font-weight:900;font-stretch:100%;letter-spacing:-.04em;font-variation-settings:"opsz" 144,"SOFT" 100,"WONK" 1}
+body.golf .film h1{margin-bottom:clamp(20px,2.4vw,36px)}
+body.golf .wordmark{line-height:1.05;position:relative;z-index:0;will-change:transform;font-family:var(--serif);font-weight:900;font-stretch:100%;letter-spacing:-.04em;font-variation-settings:"opsz" 144,"SOFT" 100,"WONK" 1}
 
 /* How it works: tee markers pop in and the route between them draws itself */
 body.golf .steps{gap:28px}
