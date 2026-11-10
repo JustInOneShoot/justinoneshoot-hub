@@ -266,6 +266,45 @@
     return true;
   }
 
+  /* Room mapping. When scroll.json has "marks" (film positions 0..1, one more
+     mark than rooms) and sections have data-room="1".."N", section n centred in
+     the viewport shows the middle of room n (between marks[n-1] and marks[n]);
+     the gaps between sections are the camera moving between rooms; whatever
+     comes after the last room holds the last frame. With no marks, the film
+     simply follows the scroll from top to bottom. */
+  var rooms = null;
+  function markAt(m) { return clamp(typeof m === "number" ? m : (m && +m.at) || 0); }
+  function buildRooms(marks) {
+    rooms = null;
+    if (!marks || marks.length < 2) return;
+    var secs = [].slice.call(document.querySelectorAll("[data-room]"))
+      .map(function (s) { return { n: parseInt(s.getAttribute("data-room"), 10), el: s }; })
+      .filter(function (s) { return s.n >= 1 && s.n < marks.length; })
+      .sort(function (a, b) { return a.n - b.n; });
+    if (!secs.length) return;
+    rooms = { marks: marks.map(markAt), secs: secs };
+  }
+  function filmProgress(p) {
+    if (!rooms) return p;
+    var vh = window.innerHeight, y = window.scrollY, m = rooms.marks, pts = [[0, m[0]]];
+    rooms.secs.forEach(function (s, i) {
+      var r = s.el.getBoundingClientRect();
+      var c = r.top + y + r.height / 2 - vh / 2, v = (m[s.n - 1] + m[s.n]) / 2;
+      if (i === 0 && c <= 0) { pts[0][1] = v; return; }
+      pts.push([Math.max(pts[pts.length - 1][0] + 1, c), v]);
+    });
+    var last = pts[pts.length - 1];
+    pts.push([last[0] + vh * 0.6, m[rooms.secs[rooms.secs.length - 1].n]]);   // then hold the last frame
+    if (y <= 0) return pts[0][1];
+    for (var i = 1; i < pts.length; i++) {
+      if (y <= pts[i][0]) {
+        var a = pts[i - 1], b = pts[i];
+        return a[1] + (b[1] - a[1]) * ((y - a[0]) / (b[0] - a[0]));
+      }
+    }
+    return pts[pts.length - 1][1];
+  }
+
   function frameFor(p) {
     var want = Math.round(p * (state.count - 1));
     if (want === state.last) return;
@@ -287,7 +326,7 @@
     if (!state.count) return;
     if (Math.abs(p - state.p) < 0.0004 && state.last >= 0) return;
     state.p = p;
-    frameFor(p);
+    frameFor(filmProgress(p));
   }
   function request() { if (!queued) { queued = true; requestAnimationFrame(tick); } }
 
@@ -321,6 +360,8 @@
       return;
     }
     document.documentElement.classList.add("has-film");
+    buildRooms(info.marks);
+    if (rooms) document.documentElement.classList.add("rooms");
     stills(info);
     load(info);
     var wasTall = state.tall;
