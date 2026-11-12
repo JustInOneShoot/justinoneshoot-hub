@@ -90,8 +90,8 @@ html.rooms.has-film body.cine section[data-room]:not(.film)>.wrap{width:min(34em
   background:rgba(8,16,12,.58);border:1px solid rgba(255,255,255,.16);border-radius:12px;
   backdrop-filter:blur(14px) saturate(1.2);-webkit-backdrop-filter:blur(14px) saturate(1.2);box-shadow:0 24px 60px -28px rgba(0,0,0,.7)}
 html.rooms.has-film body.homes section[data-room]:not(.film)>.wrap{background:rgba(14,22,42,.6)}
-html.rooms.has-film body.cine section[data-room="3"]:not(.film)>.wrap,
-html.rooms.has-film body.cine section[data-room="5"]:not(.film)>.wrap{margin:0 auto 0 max(32px,6vw)}
+html.rooms.has-film body.golf section[data-room="3"]:not(.film)>.wrap,
+html.rooms.has-film body.golf section[data-room="5"]:not(.film)>.wrap{margin:0 auto 0 max(32px,6vw)}
 html.rooms.has-film body.cine section[data-room]:not(.film) .honest,
 html.rooms.has-film body.cine .honest{grid-template-columns:1fr}
 html.rooms.has-film body.cine section[data-room]:not(.film)>.wrap .stills{display:none}
