@@ -199,6 +199,8 @@ body.hub .hero{padding-bottom:40px}
 .choose a svg .flag{fill:var(--gold)}
 .choose .g{background:var(--pine);color:var(--linen)}
 .choose .h{background:var(--panel);color:var(--ink);border:1px solid var(--rule)}
+body.hub .fine{font-size:16px;max-width:60ch}
+.choose a:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
 .choose a:hover h2{text-decoration:underline;text-decoration-color:var(--gold);text-underline-offset:6px}
 
 /* Plain pages (privacy, 404) */
