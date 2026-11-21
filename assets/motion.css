@@ -10,7 +10,7 @@
 @keyframes mo-ripple{0%,100%{transform:translateY(0)}50%{transform:translateY(-.07em)}}
 /* Safety net: if the reveal has not fired after 2.5s (slow or throttled browser),
    the first-screen headline and wordmark settle to full clarity anyway */
-.rv .film [data-split]:not(.in) .w:not(.rot)>span{animation:mo-settle .01s linear 2.5s forwards}
+.rv .film [data-split]:not(.in) .w:not(.rot)>span{animation:mo-settle .01s linear 1.8s forwards}
 @keyframes mo-settle{to{opacity:1;filter:none;transform:none;color:inherit}}
 /* One word in the opening line keeps changing */
 .w.rot{position:relative}

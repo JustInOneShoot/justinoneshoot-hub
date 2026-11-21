@@ -82,6 +82,11 @@
     });
     document.querySelectorAll("main h2, .film h1, .item h3, .steps h3, main .lead, .sub, .honest p, summary, .wordmark").forEach(watch);
     rotator();
+    // First screen must never wait on the observer (slow or throttled browsers):
+    // after 1.2s everything in it is switched on, whatever the observer did.
+    setTimeout(function () {
+      document.querySelectorAll(".film [data-split], .film [data-r], .wordmark").forEach(function (el) { el.classList.add("in"); });
+    }, 1200);
   }
 
   /* One word in the opening line keeps changing: <h1 data-rotate="hole|green|fairway"> */
