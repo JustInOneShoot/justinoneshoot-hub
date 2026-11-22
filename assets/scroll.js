@@ -87,6 +87,18 @@
     setTimeout(function () {
       document.querySelectorAll(".film [data-split], .film [data-r], .wordmark").forEach(function (el) { el.classList.add("in"); });
     }, 1200);
+    // Last resort: at 2.2s the timer itself writes the final look onto the first
+    // screen (no reliance on transitions or animation events, which throttled
+    // or background browsers can freeze). The rotating word is left alone.
+    setTimeout(function () {
+      document.querySelectorAll(".film .w:not(.rot)>span, .wordmark .w>span").forEach(function (s) {
+        s.style.transition = "none"; s.style.opacity = "1"; s.style.filter = "none"; s.style.color = "inherit";
+        if (!s.closest(".wordmark")) s.style.transform = "none";
+      });
+      document.querySelectorAll(".film [data-r]").forEach(function (el) {
+        el.style.transition = "none"; el.style.opacity = "1"; el.style.filter = "none"; el.style.transform = "none";
+      });
+    }, 2200);
   }
 
   /* One word in the opening line keeps changing: <h1 data-rotate="hole|green|fairway"> */
