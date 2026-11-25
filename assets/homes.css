@@ -122,6 +122,13 @@ body.homes .progress i{position:absolute;left:-3px;top:calc(var(--p,0) * 100%);m
   body.cine.homes .film .over .wrap{flex-wrap:wrap}
   body.cine.homes .film .side{align-items:flex-start;width:100%}
 }
+/* Laptop widths: tighter facts so the row stays inside the frame */
+@media (min-width:1200px) and (max-width:1599px){
+  body.homes .facts{gap:20px}
+  body.homes .facts div{padding-left:10px}
+  body.homes .facts span{max-width:11ch;font-size:13px}
+  body.homes .wordmark{font-size:clamp(34px,4.6vw,120px)}
+}
 @media (max-width:820px){
   body.cine.homes::after{inset:8px}
   body.cine.homes header.top{top:8px;left:8px;right:8px}
